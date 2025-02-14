@@ -2,7 +2,6 @@ Feature: Check Out Functionality
   Background:
     Given User navigate to URL
 
-
   Scenario: adding product into cart
     When User enter credential in "username_field" as "username"
     And User enter credential in "password_field" as "password"
@@ -195,47 +194,52 @@ Feature: Check Out Functionality
     When User click on "continue_button"
     Then User is able to see "error_message_for_valid_first_name"
 
-#  Scenario: check out all information before order place
-#    When User enter credential in "username_field" as "username"
-#    And User enter credential in "password_field" as "password"
-#    And User clicks on "loginButton_field"
-#    Then User add "sauce_labs_fleece_jacket" into cart and get price
-#    And User add "sauce_labs_backpack" into cart and get price
-#    And User add "sauce_labs_bolt_t_shirt" into cart and get price
-#    And User add "test_all_the_things_t_shirt_red" into cart and get price
-#    And User add "sauce_labs_bike_light" into cart and get price
-#    And User add "sauce_labs_onesie" into cart and get price
-#    When When User click on "cart_logo"
-#    Then User click on "check_out_button"
-#    Then User enter "Nitin" into "first_name_field"
-#    And User enter "Patil" into "last_name_field"
-#    And User enter "112233" into "postal_code_field"
-#    When User click on "continue_button"
-#    Then User validate actual price
-#    And User validate total price
+  Scenario: check out all information before order place
+    When User enter credential in "username_field" as "username"
+    And User enter credential in "password_field" as "password"
+    And User clicks on "loginButton_field"
+    And User sum price of all item
+    Then User add "sauce_labs_fleece_jacket" into cart
+    And User add "sauce_labs_backpack" into cart
+    And User add "sauce_labs_bolt_t_shirt" into cart
+    And User add "test_all_the_things_t_shirt_red" into cart
+    And User add "sauce_labs_bike_light" into cart
+    And User add "sauce_labs_onesie" into cart
+    When When User click on "cart_logo"
+    Then User click on "check_out_button"
+    Then User enter "Nitin" into "first_name_field"
+    And User enter "Patil" into "last_name_field"
+    And User enter "112233" into "postal_code_field"
+    When User click on "continue_button"
+    Then User validate actual price
+    And User validate total price
+    And User is able to see "finish_button"
+    When User click on "finish_button"
+    Then User is able to see "order_successful_message"
 #
+#    @valid
 #  Scenario: check out all information before order place
-#    When User enter credential in "username_field" as "username"
-#    And User enter credential in "password_field" as "password"
-#    And User clicks on "loginButton_field"
-#    Then User add "sauce_labs_fleece_jacket" into cart and get price
-#    And User add "sauce_labs_backpack" into cart and get price
-#    And User add "sauce_labs_bolt_t_shirt" into cart and get price
-#    And User add "test_all_the_things_t_shirt_red" into cart and get price
-#    And User add "sauce_labs_bike_light" into cart and get price
-#    And User add "sauce_labs_onesie" into cart and get price
-#    When When User click on "cart_logo"
-#    Then User click on "check_out_button"
-#    Then User enter "Nitin" into "first_name_field"
-#    And User enter "Patil" into "last_name_field"
-#    And User enter "112233" into "postal_code_field"
-#    When User click on "continue_button"
-#    Then User validate actual price
-#    And User validate total price
+#      When User enter credential in "username_field" as "username"
+#      And User enter credential in "password_field" as "password"
+#      And User clicks on "loginButton_field"
+#      And User sum price of all item
+#      Then User add "sauce_labs_fleece_jacket" into cart
+#      And User add "sauce_labs_backpack" into cart
+#      And User add "sauce_labs_bolt_t_shirt" into cart
+#      And User add "test_all_the_things_t_shirt_red" into cart
+#      And User add "sauce_labs_bike_light" into cart
+#      And User add "sauce_labs_onesie" into cart
+#      When When User click on "cart_logo"
+#      Then User click on "check_out_button"
+#      Then User enter "Nitin" into "first_name_field"
+#      And User enter "Patil" into "last_name_field"
+#      And User enter "112233" into "postal_code_field"
+#      When User click on "continue_button"
+#      Then User validate actual price
+#      And User validate total price
 #    And User is able to see "finish_button"
 #    When User click on "finish_button"
 #    Then User is able to see "order_successful_message"
-
 
 
 

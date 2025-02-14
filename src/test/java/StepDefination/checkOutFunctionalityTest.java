@@ -7,11 +7,25 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import java.util.List;
 
 public class checkOutFunctionalityTest {
 
-    WebDriver driver = DriverFactoryTest.getDriver();
+    static double ActualPrice;
+    static WebDriver driver = DriverFactoryTest.getDriver();
     configReader configreader = new configReader("src/test/resources/Config/checkOutFunctionality.properties");
+
+    @When("User sum price of all item")
+    public void user_sum_price_of_all_item() {
+        List<WebElement> prices = driver.findElements(By.xpath("//div[@class='inventory_item_price']"));
+        for(WebElement ele:prices)
+        {
+            double p= Double.parseDouble(ele.getText().substring(1));
+            ActualPrice = ActualPrice + p;
+        }
+    }
 
     @Then("User add {string} into cart")
     public void user_add_into_cart(String add_to_cart)
@@ -27,7 +41,6 @@ public class checkOutFunctionalityTest {
         String click_locator = configreader.getLocators(click);
         WebElement clicks = driver.findElement(By.xpath(click_locator));
         clicks.click();
-
     }
 
     @Then("User click on {string}")
@@ -35,7 +48,6 @@ public class checkOutFunctionalityTest {
     {
         String click_locator = configreader.getLocators(click);
         WebElement clicks = driver.findElement(By.xpath(click_locator));
-        System.out.println("click on checkout button");
         clicks.click();
     }
 
@@ -45,25 +57,27 @@ public class checkOutFunctionalityTest {
         String field_locator = configreader.getLocators(field);
         WebElement send = driver.findElement(By.xpath(field_locator));
         send.sendKeys(value);
-
     }
 
     @Then("User validate actual price")
     public void user_validate_actual_price()
     {
-
+        String price = configreader.getLocators("actual_price");
+        WebElement validateActualPrice=driver.findElement(By.xpath(price));
+        Double p = Double.parseDouble(validateActualPrice.getText().substring(13));
+        Assert.assertEquals(p,ActualPrice);
     }
 
     @Then("User validate total price")
     public void user_validate_total_price()
     {
+        String price = configreader.getLocators("total_price");
+        String tax = configreader.getLocators("tax");
+        WebElement tax_=driver.findElement(By.xpath(tax));
+        WebElement validateActualPrice=driver.findElement(By.xpath(price));
+        Double total_price_actual = Double.parseDouble(validateActualPrice.getText().substring(8));
+        Double total_price_expected = Double.parseDouble(tax_.getText().substring(6))+ActualPrice;
+        Assert.assertEquals(total_price_actual,total_price_expected);
 
     }
-    @Then("User add {string} into cart and get price")
-    public void user_add_into_cart_and_get_price(String add_to_cart)
-    {
-
-    }
-
-
 }

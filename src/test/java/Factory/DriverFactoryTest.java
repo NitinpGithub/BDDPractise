@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverFactoryTest
 {
-    public static WebDriver driver=null;
+    public static WebDriver driver;
 
     public static WebDriver getDriver()
     {
