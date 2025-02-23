@@ -1,7 +1,7 @@
-#Feature: Check Out Functionality
-#  Background:
-#    Given User navigate to URL
-#
+Feature: Check Out Functionality
+  Background:
+    Given User navigate to URL
+
 #  Scenario: adding product into cart
 #    When User enter credential in "username_field" as "username"
 #    And User enter credential in "password_field" as "password"
@@ -240,4 +240,4 @@
 ##    And User is able to see "finish_button"
 ##    When User click on "finish_button"
 ##    Then User is able to see "order_successful_message"
-
+#

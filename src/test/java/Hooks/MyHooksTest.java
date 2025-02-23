@@ -15,9 +15,14 @@ public class MyHooksTest
     @After
     public void tearDown()
     {
-        driver.quit();
-        DriverFactoryTest.driver=null;
+        try
+        {
+            driver.quit();
+            DriverFactoryTest.driver=null;
+        }catch (Exception e)
+        {
 
+        }
     }
 
 

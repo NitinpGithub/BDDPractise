@@ -3,10 +3,12 @@ package Factory;
 import Utils.configReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactoryTest
 {
     public static WebDriver driver;
+    public static ChromeOptions options;
 
     public static WebDriver getDriver()
     {
@@ -16,7 +18,9 @@ public class DriverFactoryTest
 
             if (browser.toLowerCase().equals("chrome"))
             {
-                driver = new ChromeDriver();
+                options = new ChromeOptions();
+                options.addArguments("--headless");
+                driver = new ChromeDriver(options);
             }
         }
         return driver;
