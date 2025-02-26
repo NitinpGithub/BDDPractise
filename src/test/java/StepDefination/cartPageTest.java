@@ -19,7 +19,7 @@ public class cartPageTest {
     public void check_quantity_of_six_product_add_into_cart() {
 
         String quantity = configreader.getLocators("quantity");
-        Assert.assertEquals("6s",driver.findElement(By.xpath(quantity)).getText());
+        Assert.assertEquals("6",driver.findElement(By.xpath(quantity)).getText());
         // for demo four
 
     }
