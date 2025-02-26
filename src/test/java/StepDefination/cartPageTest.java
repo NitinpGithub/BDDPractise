@@ -20,7 +20,7 @@ public class cartPageTest {
 
         String quantity = configreader.getLocators("quantity");
         Assert.assertEquals("6",driver.findElement(By.xpath(quantity)).getText());
-        // for demo two
+        // for demo three
 
     }
 }
