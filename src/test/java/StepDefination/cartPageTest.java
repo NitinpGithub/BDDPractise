@@ -20,7 +20,7 @@ public class cartPageTest {
 
         String quantity = configreader.getLocators("quantity");
         Assert.assertEquals("6",driver.findElement(By.xpath(quantity)).getText());
-        // adding new feature jira1234
+        // want to add new feature Date 28/02/25
 
     }
 }
